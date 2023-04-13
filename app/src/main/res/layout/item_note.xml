@@ -1,0 +1,79 @@
+ <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+     app:cardElevation="10dp"
+     app:cardCornerRadius="15dp"
+    android:layout_margin="12dp">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@color/yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"
+        tools:text="Title" />
+
+    <TextView
+
+        android:layout_gravity="center_vertical"
+        android:id="@+id/item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        tools:text="Desc" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_delete"
+        android:layout_gravity="end"
+        android:padding="8dp"
+        android:layout_margin="5dp"
+       />
+
+    <ImageView
+
+        android:id="@+id/editNote"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_edit"
+        android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:padding="8dp"
+        />
+     <ImageView
+         android:id="@+id/share"
+         android:layout_width="40dp"
+         android:layout_height="40dp"
+         android:src="@drawable/ic_shere"
+         android:layout_gravity="center_horizontal"
+         android:padding="10dp"
+         android:layout_marginStart="80dp"
+         android:layout_marginTop="5dp"
+         />
+     <TextView
+
+         android:textColor="@color/black"
+         android:layout_gravity="end"
+         android:id="@+id/item_date"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginEnd="5dp"
+         android:layout_marginTop="60dp"
+         tools:text="12/12/23 12:20" />
+
+</androidx.cardview.widget.CardView>

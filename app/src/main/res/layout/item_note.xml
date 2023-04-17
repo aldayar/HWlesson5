@@ -8,10 +8,12 @@
     android:layout_margin="12dp">
 
     <ImageView
+
+        android:background="@drawable/ic_add_photo"
         android:id="@+id/item_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@color/yellow"
+        android:padding="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />

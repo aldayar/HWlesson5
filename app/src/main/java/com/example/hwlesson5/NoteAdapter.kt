@@ -14,15 +14,14 @@ import java.nio.file.Files.list
 
 class NoteAdapter(private val listener: IOnItem) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
-    private val list = mutableListOf<Note>()
-
-    fun setList(list: List<Note>) {
+    val list : MutableList<NoteModel> = ArrayList()
+    fun setList(list: MutableList<NoteModel>) {
         this.list.clear()
         this.list.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun addNote(note: Note) {
+    fun addNote(note: NoteModel) {
         list.add(note)
         notifyDataSetChanged()
     }
@@ -32,7 +31,7 @@ class NoteAdapter(private val listener: IOnItem) : RecyclerView.Adapter<NoteAdap
         notifyItemRemoved(pos)
     }
 
-    fun getItem(pos: Int): Note {
+    fun getItem(pos: Int): NoteModel {
         return list[pos]
     }
 
@@ -79,7 +78,7 @@ class NoteAdapter(private val listener: IOnItem) : RecyclerView.Adapter<NoteAdap
 
     interface IOnItem {
         fun delete(pos: Int)
-        fun edit(pos: Int, note: Note)
+        fun edit(pos: Int, note: NoteModel)
         fun share(pos: Int)
     }
 }

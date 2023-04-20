@@ -1,16 +1,12 @@
 package com.example.hwlesson5
 
 import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import java.nio.file.Files.list
+import com.example.hwlesson5.databinding.ItemNoteBinding
 
 class NoteAdapter(private val listener: IOnItem) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
@@ -25,6 +21,11 @@ class NoteAdapter(private val listener: IOnItem) : RecyclerView.Adapter<NoteAdap
         list.add(note)
         notifyDataSetChanged()
     }
+    fun edit(pos: Int, note: NoteModel) {
+        list.set(pos,note)
+        notifyItemChanged(pos)
+    }
+
 
     fun delete(pos: Int) {
         list.removeAt(pos)
@@ -35,9 +36,9 @@ class NoteAdapter(private val listener: IOnItem) : RecyclerView.Adapter<NoteAdap
         return list[pos]
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup , viewType: Int): ViewHolder {
+        val binding = ItemNoteBinding.inflate( LayoutInflater.from(parent.context), parent , false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -49,29 +50,22 @@ class NoteAdapter(private val listener: IOnItem) : RecyclerView.Adapter<NoteAdap
     }
 
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageView: ImageView = itemView.findViewById(R.id.item_image)
-        private val title: TextView = itemView.findViewById(R.id.item_title)
-        private val desc: TextView = itemView.findViewById(R.id.item_desc)
-        private val delete: ImageView = itemView.findViewById(R.id.delete)
-        private val editNote: ImageView = itemView.findViewById(R.id.editNote)
-        private val shareNote: ImageView = itemView.findViewById(R.id.share)
-
+    inner class ViewHolder(val item: ItemNoteBinding) : RecyclerView.ViewHolder(item.root) {
         fun bind(position: Int) {
-            title.text = list[position].title
-            desc.text = list[position].desc
+            item.itemTitle.text = list[position].title
+            item.itemDesc.text = list[position].desc
             Glide.with(itemView)
                 .load(list[position].image)
                 .transform(CenterCrop(), RoundedCorners(25))
-                .into(imageView)
+                .into(item.itemImage)
 
-            delete.setOnClickListener {
+            item.delete.setOnClickListener {
                 listener.delete(adapterPosition) }
 
-            editNote.setOnClickListener {
+            item.editNote.setOnClickListener {
                 listener.edit(adapterPosition, list[position]) }
 
-            shareNote.setOnClickListener{
+            item.share.setOnClickListener{
                 listener.share(adapterPosition)}
         }
     }

@@ -14,7 +14,7 @@
         android:layout_height="311dp"
         android:layout_margin="42dp"
         app:cardCornerRadius="16dp"
-        android:id="@+id/cardview">
+        android:id="@+id/card_view">
         <ImageView
 
             android:layout_marginBottom="25dp"
@@ -63,6 +63,7 @@
         />
 
     <com.google.android.material.button.MaterialButton
+        android:enabled="false"
         android:id="@+id/add_btn"
         android:textColor="@color/black"
         android:backgroundTint="@color/yellow"
